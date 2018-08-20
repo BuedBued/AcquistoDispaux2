@@ -8,8 +8,10 @@ import java.util.ArrayList;
 
 import org.w3c.dom.CharacterData;
 
+import be.website.beans.BCategory;
 import be.website.beans.BSport;
 import be.website.beans.BUser;
+import be.website.dao.DAOFactory;
 
 public class XMLTranslate {
 	
@@ -35,7 +37,7 @@ public class XMLTranslate {
 		return res;
 	}
 	
-	//Exctraction d'une liste de sport dans le XML
+	//Exctraction d'une liste de sports dans le XML
 	public static ArrayList<BSport> getAllSportsFromXML(Document xml){
 		ArrayList<BSport> listSports = new ArrayList<BSport>();
 		BSport res;
@@ -65,6 +67,7 @@ public class XMLTranslate {
 		return listSports;
 	}
 	
+	//Extraction d'un utilisateur
 	public static BUser getUserFromXML(Document xml) {
 		BUser res = null;
 		NodeList userN = xml.getElementsByTagName("user");
@@ -101,6 +104,7 @@ public class XMLTranslate {
 		return res;
 	}
 	
+	//Extraction d'une liste d'utilisateurs
 	public static ArrayList<BUser> getAllUsersFromXML(Document xml){
 		ArrayList<BUser> listUsers = new ArrayList<BUser>();
 		BUser res;
@@ -143,6 +147,69 @@ public class XMLTranslate {
 			}
 		}
 		return listUsers;
+	}
+	
+	//Extraction d'une catégorie
+	public static BCategory getCategoryFromXML(Document xml) {
+		BCategory res = null;
+		NodeList categoryN = xml.getElementsByTagName("user");
+		Element categoryE = (Element)categoryN.item(0);
+		
+		NodeList idCategoryN = categoryE.getElementsByTagName("id");
+		Element value = (Element)idCategoryN.item(0);
+		String id = getValueFromElement(value);
+		
+		NodeList nameN = categoryE.getElementsByTagName("name");
+		value = (Element)nameN.item(0);
+		String name = getValueFromElement(value);
+		
+		NodeList idSportN = categoryE.getElementsByTagName("idSport");
+		value = (Element)idSportN.item(0);
+		String idSportString = getValueFromElement(value);
+		
+		if(id!=null && name!=null && idSportString!=null) {
+			res = new BCategory();
+			res.setId(Integer.parseInt(id));
+			res.setName(name);
+			int idSport = Integer.parseInt(idSportString);
+			res.setSport(DAOFactory.get().getDAOSport().select(idSport));
+		}
+		return res;
+	}
+	
+	public static ArrayList<BCategory> getAllCategoriesFromXML(Document xml){
+		ArrayList<BCategory> listCategories = new ArrayList<BCategory>();
+		BCategory res;
+		
+		NodeList listCategoriesN = xml.getElementsByTagName("categories");
+		Element listCategoriesE = (Element)listCategoriesN.item(0);
+		
+		NodeList categoryN = listCategoriesE.getElementsByTagName("category");
+		for(int i = 0; i<categoryN.getLength(); i++) {
+			Element categoryE = (Element)categoryN.item(i);
+			
+			NodeList idCategoryN = categoryE.getElementsByTagName("id");
+			Element value = (Element)idCategoryN.item(0);
+			String id = getValueFromElement(value);
+			
+			NodeList nameN = categoryE.getElementsByTagName("name");
+			value = (Element)nameN.item(0);
+			String name = getValueFromElement(value);
+			
+			NodeList idSportN = categoryE.getElementsByTagName("idSport");
+			value = (Element)idSportN.item(0);
+			String idSportString = getValueFromElement(value);
+			
+			if(id!=null && name!=null && idSportString!=null) {
+				res = new BCategory();
+				res.setId(Integer.parseInt(id));
+				res.setName(name);
+				int idSport = Integer.parseInt(idSportString);
+				res.setSport(DAOFactory.get().getDAOSport().select(idSport));
+				listCategories.add(res);
+			}
+		}
+		return listCategories;
 	}
 	
 	//Récupération de la valeur d'une balise XML
