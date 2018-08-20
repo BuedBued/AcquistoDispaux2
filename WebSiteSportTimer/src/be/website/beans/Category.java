@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Category implements Serializable{
 	private static final long serialVersionUID = -6474232469497535388L;
 	private int id;
-	private String nom;
+	private String name;
 	private Sport sport;
 	
 	public Category() {}
@@ -16,11 +16,11 @@ public class Category implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getNom() {
-		return nom;
+	public String getName() {
+		return name;
 	}
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public Sport getSport() {
 		return sport;
