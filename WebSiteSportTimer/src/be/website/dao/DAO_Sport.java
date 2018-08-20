@@ -17,7 +17,7 @@ import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 
 import be.website.beans.BSport;
-import be.website.xmlTraslate.XMLTranslate;
+import be.website.XMLTranslate.XMLTranslate;
 
 public class DAO_Sport extends DAO<BSport> {
 	public DAO_Sport(WebResource webResource) {
