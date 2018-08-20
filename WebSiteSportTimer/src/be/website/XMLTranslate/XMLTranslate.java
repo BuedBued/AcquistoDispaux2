@@ -153,7 +153,7 @@ public class XMLTranslate {
 	//Extraction d'une catégorie
 	public static BCategory getCategoryFromXML(Document xml) {
 		BCategory res = null;
-		NodeList categoryN = xml.getElementsByTagName("user");
+		NodeList categoryN = xml.getElementsByTagName("category");
 		Element categoryE = (Element)categoryN.item(0);
 		
 		NodeList idCategoryN = categoryE.getElementsByTagName("id");

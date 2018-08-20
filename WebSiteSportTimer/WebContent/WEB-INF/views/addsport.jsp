@@ -17,7 +17,7 @@
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="name">Nom : </label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" id="name" placeholder="Entrez votre prénom">
+				<input type="text" class="form-control" id="nameSport" name="nameSport" placeholder="Entrez le sport">
 			</div>
 		</div>
 		<div class="form-group">

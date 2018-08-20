@@ -101,7 +101,7 @@ public class DAO_Record extends DAO<BRecord> {
 	@Override
 	public ArrayList<BRecord> selectAll(){
 		ArrayList<BRecord> listRecord = new ArrayList<BRecord>();
-		String xmlString = webResource.path("user").accept(MediaType.TEXT_XML).get(String.class);
+		String xmlString = webResource.path("record").accept(MediaType.TEXT_XML).get(String.class);
 		DocumentBuilder db = null;
 		try {
 			db = DocumentBuilderFactory.newInstance().newDocumentBuilder();

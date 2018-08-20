@@ -99,7 +99,7 @@ public class DAO_Category extends DAO<BCategory> {
 	@Override
 	public ArrayList<BCategory> selectAll(){
 		ArrayList<BCategory> listCat = new ArrayList<BCategory>();
-		String xmlString = webResource.path("user").accept(MediaType.TEXT_XML).get(String.class);
+		String xmlString = webResource.path("category").accept(MediaType.TEXT_XML).get(String.class);
 		DocumentBuilder db = null;
 		try {
 			db = DocumentBuilderFactory.newInstance().newDocumentBuilder();

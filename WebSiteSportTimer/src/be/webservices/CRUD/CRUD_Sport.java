@@ -126,7 +126,8 @@ public class CRUD_Sport {
 			stmt.setString(2, name);
 			stmt.execute();
 			id = stmt.getInt(1);
-			response = Response.status(Status.OK).entity(id).build();
+			String idString = ""+id;
+			response = Response.status(Status.OK).entity(idString).build();
 		}
 		catch(SQLException e) {
 			System.out.println("SQL ERROR : " + e.getMessage());

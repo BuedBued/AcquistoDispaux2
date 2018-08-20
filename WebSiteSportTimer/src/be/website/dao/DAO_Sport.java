@@ -29,13 +29,17 @@ public class DAO_Sport extends DAO<BSport> {
 		boolean b = false;
 		int id = -1;
 		try {
-			
-			ClientResponse response = webResource.path("sport").queryParam("name",obj.getName()).accept(MediaType.TEXT_PLAIN).post(ClientResponse.class);
-			id = response.getEntity(int.class);
+			MultivaluedMap<String, String> params = new MultivaluedMapImpl();
+			params.add("name",obj.getName());
+			ClientResponse response = webResource.path("sport").type("application/x-www-form-urlencoded").post(ClientResponse.class, params);
+			id = Integer.parseInt(response.getEntity(String.class));
 			if(id>0) {
 				obj.setId(id);
-				b = true;
+				if(response.getStatus()==200)
+					b = true;
 			}
+			else
+				System.out.println(response.getStatus());
 		}
 		catch(Exception e) {
 			e.printStackTrace();

@@ -1,5 +1,6 @@
 package be.website.dao;
 import java.io.StringReader;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import javax.ws.rs.core.MediaType;
@@ -33,10 +34,11 @@ public class DAO_User extends DAO<BUser> {
 			params.add("firstName",obj.getFirstName());
 			params.add("lastName",obj.getLastName());
 			ClientResponse response = webResource.path("user").type("application/x-www-form-urlencoded").post(ClientResponse.class, params);
-			id = response.getEntity(int.class);
+			id = Integer.parseInt(response.getEntity(String.class));
 			if(id>0) {
 				obj.setId(id);
-				b = true;
+				if(response.getStatus()==200)
+					b = true;
 			}
 		}
 		catch(Exception e) {
@@ -99,6 +101,7 @@ public class DAO_User extends DAO<BUser> {
 		return res;
 	}
 	
+	@Override
 	public ArrayList<BUser> selectAll(){
 		ArrayList<BUser> listUser = new ArrayList<BUser>();
 		String xmlString = webResource.path("user").accept(MediaType.TEXT_XML).get(String.class);

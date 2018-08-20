@@ -138,7 +138,8 @@ public class CRUD_User {
 			stmt.setString(5, lastName);
 			stmt.execute();
 			id = stmt.getInt(1);
-			response = Response.status(Status.OK).entity(id).build();
+			String idString = ""+id;
+			response = Response.status(Status.OK).entity(idString).build();
 		}
 		catch(SQLException e) {
 			System.out.println("SQL ERROR : " + e.getMessage());
