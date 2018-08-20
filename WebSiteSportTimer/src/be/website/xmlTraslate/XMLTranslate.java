@@ -8,11 +8,11 @@ import java.util.ArrayList;
 
 import org.w3c.dom.CharacterData;
 
-import be.website.beans.Sport;
+import be.website.beans.BSport;
 
 public class XMLTranslate {
-	public static Sport getSportFromXML(Document xml) {
-		Sport res = null;
+	public static BSport getSportFromXML(Document xml) {
+		BSport res = null;
 		NodeList sportN = xml.getElementsByTagName("sport");
 		Element sportE = (Element)sportN.item(0);
 		
@@ -25,16 +25,16 @@ public class XMLTranslate {
 		String name = getValueFromElement(value);
 		
 		if(id!=null && name!=null) {
-			res = new Sport();
+			res = new BSport();
 			res.setId(Integer.parseInt(id));
 			res.setName(name);
 		}
 		return res;
 	}
 	
-	public static ArrayList<Sport> getAllSportsFromXML(Document xml){
-		ArrayList<Sport> listSports = new ArrayList<Sport>();
-		Sport res;
+	public static ArrayList<BSport> getAllSportsFromXML(Document xml){
+		ArrayList<BSport> listSports = new ArrayList<BSport>();
+		BSport res;
 		
 		NodeList listSportsN = xml.getElementsByTagName("sports");
 		Element listSportsE = (Element)listSportsN.item(0);
@@ -52,7 +52,7 @@ public class XMLTranslate {
 			String name = getValueFromElement(value);
 			
 			if(id!=null && name!=null) {
-				res = new Sport();
+				res = new BSport();
 				res.setId(Integer.parseInt(id));
 				res.setName(name);
 				listSports.add(res);

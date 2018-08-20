@@ -1,33 +1,33 @@
 package be.website.dao;
 import com.sun.jersey.api.client.WebResource;
 
-import be.website.beans.User;
+import be.website.beans.BUser;
 
-public class DAO_User extends DAO<User> {
+public class DAO_User extends DAO<BUser> {
 	public DAO_User(WebResource webResource) {
 		super(webResource);
 	}
 
 	@Override
-	public boolean create(User obj) {
+	public boolean create(BUser obj) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean delete(User obj) {
+	public boolean delete(BUser obj) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean update(User obj) {
+	public boolean update(BUser obj) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public User select(int id) {
+	public BUser select(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

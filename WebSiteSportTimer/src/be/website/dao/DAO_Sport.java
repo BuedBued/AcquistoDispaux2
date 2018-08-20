@@ -16,16 +16,16 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 
-import be.website.beans.Sport;
+import be.website.beans.BSport;
 import be.website.xmlTraslate.XMLTranslate;
 
-public class DAO_Sport extends DAO<Sport> {
+public class DAO_Sport extends DAO<BSport> {
 	public DAO_Sport(WebResource webResource) {
 		super(webResource);
 	}
 
 	@Override
-	public boolean create(Sport obj) {
+	public boolean create(BSport obj) {
 		boolean b = false;
 		int id = -1;
 		try {
@@ -44,7 +44,7 @@ public class DAO_Sport extends DAO<Sport> {
 	}
 
 	@Override
-	public boolean delete(Sport obj) {
+	public boolean delete(BSport obj) {
 		boolean b = false;
 		try {
 			ClientResponse response = webResource.path("sport/"+obj.getId()).delete(ClientResponse.class);
@@ -58,7 +58,7 @@ public class DAO_Sport extends DAO<Sport> {
 	}
 
 	@Override
-	public boolean update(Sport obj) {
+	public boolean update(BSport obj) {
 		boolean b = false;
 		try {
 			MultivaluedMap<String,String> params = new MultivaluedMapImpl();
@@ -76,8 +76,8 @@ public class DAO_Sport extends DAO<Sport> {
 	}
 
 	@Override
-	public Sport select(int id){
-		Sport res = null;
+	public BSport select(int id){
+		BSport res = null;
 		String xmlString = webResource.path("sport/"+id).accept(MediaType.TEXT_XML).get(String.class);
 		
 		DocumentBuilder db = null;
@@ -94,8 +94,8 @@ public class DAO_Sport extends DAO<Sport> {
 		return res;
 	}
 	
-	public ArrayList<Sport> selectAll(){
-		ArrayList<Sport> listSport = new ArrayList<Sport>();
+	public ArrayList<BSport> selectAll(){
+		ArrayList<BSport> listSport = new ArrayList<BSport>();
 		String xmlString = webResource.path("sport").accept(MediaType.TEXT_XML).get(String.class);
 		DocumentBuilder db = null;
 		try {
