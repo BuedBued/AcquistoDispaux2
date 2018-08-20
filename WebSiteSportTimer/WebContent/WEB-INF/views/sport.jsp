@@ -20,9 +20,12 @@
 		ArrayList<BSport> listSport = (ArrayList<BSport>) request.getAttribute("listSport");
 		for(BSport b : listSport){
 		%>
-		<a href="/WebSiteSportTimer/category" class="list-group-item"><%out.print(b.getName()); %> <span class="badge">12</span></a>
+		<a href="/WebSiteSportTimer/category?id=<%out.print(b.getId());%>" class="list-group-item"><%out.print(b.getName()); %></a>
 		<%}%>
 	</div> 
+	<br/>
+	<a href="/WebSiteSportTimer/addsport" class="btn btn-default">Nouveau Sport</a>
+	<br/>
 	<br/>
 	<%@ include file="footer.jsp" %>
 </body>

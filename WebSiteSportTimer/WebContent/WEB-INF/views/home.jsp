@@ -13,7 +13,7 @@
 	</div>
 	<br/>
 	<br/>
-	<form class="form-horizontal" method="post" action="sport">
+	<form class="form-horizontal" method="post" action="home">
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="login">Login : </label>
 			<div class="col-sm-9">

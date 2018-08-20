@@ -85,13 +85,20 @@
     <servlet-name>Profile</servlet-name>
     <url-pattern>/profile</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-  <servlet-name>Records</servlet-name>
+    <servlet-name>Records</servlet-name>
     <servlet-class>be.website.servlet.Records</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Records</servlet-name>
     <url-pattern>/records</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Disconnect</servlet-name>
+    <servlet-class>be.website.servlet.Disconnect</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Disconnect</servlet-name>
+    <url-pattern>/disconnect</url-pattern>
   </servlet-mapping>
 </web-app>

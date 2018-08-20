@@ -13,11 +13,11 @@
 	</div>
 	<br/>
 	<br/>
-	<form class="form-horizontal" method="post" action="category">
+	<form class="form-horizontal" method="post" action="sport">
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="name">Nom : </label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" id="name" placeholder="Entrez votre prénom">
+				<input type="text" class="form-control" id="name" placeholder="Entrez le nom de la catégorie">
 			</div>
 		</div>
 		<div class="form-group">
@@ -27,7 +27,7 @@
   		</div>
   		<div class="form-group">
   			<div class="col-sm-offset-2 col-sm-9">
-   				<a href="/WebSiteSportTimer/category" class="btn btn-default" role="button">Retour</a>	
+   				<a href="/WebSiteSportTimer/sport" class="btn btn-default" role="button">Retour</a>	
   			</div>
   		</div>
 	</form>

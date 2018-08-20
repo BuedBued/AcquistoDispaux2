@@ -17,25 +17,25 @@
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="fname">Prénom : </label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" id="fname" name="fname" placeholder="Entrez votre prénom">
+				<input type="text" class="form-control" id="fname" placeholder="Entrez votre prénom">
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="lname">Nom : </label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" id="lname" name="lname" placeholder="Entrez votre nom">
+				<input type="text" class="form-control" id="lname" placeholder="Entrez votre nom">
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="login">Login : </label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" id="login" name="login" placeholder="Entrez votre login">
+				<input type="text" class="form-control" id="login" placeholder="Entrez votre login">
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="pw">Mot de passe : </label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" id="pw" name="pw" placeholder="Entrez votre mot de passe">
+				<input type="text" class="form-control" id="pw" placeholder="Entrez votre mot de passe">
 			</div>
 		</div>
 		<div class="form-group">
