@@ -6,6 +6,7 @@ public class BRecord implements Serializable{
 	private static final long serialVersionUID = -4257203735548628947L;
 	private int id;
 	private double time;
+	private String created;
 	private BCategory category;
 	private BUser user;
 	
@@ -35,5 +36,10 @@ public class BRecord implements Serializable{
 	public void setUser(BUser user) {
 		this.user = user;
 	}
-	
+	public String getCreated() {
+		return created;
+	}
+	public void setCreated(String created) {
+		this.created = created;
+	}
 }

@@ -1,5 +1,7 @@
 package be.website.dao;
 
+import java.util.ArrayList;
+
 import com.sun.jersey.api.client.WebResource;
 
 public abstract class DAO<T> {
@@ -13,4 +15,5 @@ public abstract class DAO<T> {
 	public abstract boolean delete(T obj);
 	public abstract boolean update(T obj);
 	public abstract T select(int id);
+	public abstract ArrayList<T> selectAll();
 }

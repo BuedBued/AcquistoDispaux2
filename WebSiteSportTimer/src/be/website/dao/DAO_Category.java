@@ -96,6 +96,7 @@ public class DAO_Category extends DAO<BCategory> {
 		return res;
 	}
 	
+	@Override
 	public ArrayList<BCategory> selectAll(){
 		ArrayList<BCategory> listCat = new ArrayList<BCategory>();
 		String xmlString = webResource.path("user").accept(MediaType.TEXT_XML).get(String.class);

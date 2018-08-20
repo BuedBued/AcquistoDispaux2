@@ -94,6 +94,7 @@ public class DAO_Sport extends DAO<BSport> {
 		return res;
 	}
 	
+	@Override
 	public ArrayList<BSport> selectAll(){
 		ArrayList<BSport> listSport = new ArrayList<BSport>();
 		String xmlString = webResource.path("sport").accept(MediaType.TEXT_XML).get(String.class);

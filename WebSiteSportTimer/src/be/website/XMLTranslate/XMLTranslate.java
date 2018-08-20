@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import org.w3c.dom.CharacterData;
 
 import be.website.beans.BCategory;
+import be.website.beans.BRecord;
 import be.website.beans.BSport;
 import be.website.beans.BUser;
 import be.website.dao.DAOFactory;
@@ -177,6 +178,7 @@ public class XMLTranslate {
 		return res;
 	}
 	
+	//Extraction Liste Catégories
 	public static ArrayList<BCategory> getAllCategoriesFromXML(Document xml){
 		ArrayList<BCategory> listCategories = new ArrayList<BCategory>();
 		BCategory res;
@@ -210,6 +212,91 @@ public class XMLTranslate {
 			}
 		}
 		return listCategories;
+	}
+	
+	//Extraction d'une catégorie
+	public static BRecord getRecordFromXML(Document xml) {
+		BRecord res = null;
+		NodeList recordN = xml.getElementsByTagName("record");
+		Element recordE = (Element)recordN.item(0);
+		
+		NodeList idRecordN = recordE.getElementsByTagName("id");
+		Element value = (Element)idRecordN.item(0);
+		String id = getValueFromElement(value);
+		
+		NodeList timeN = recordE.getElementsByTagName("time");
+		value = (Element)timeN.item(0);
+		String timer = getValueFromElement(value);
+		
+		NodeList createdN = recordE.getElementsByTagName("time");
+		value = (Element)createdN.item(0);
+		String created = getValueFromElement(value);
+		
+		NodeList idUserN = recordE.getElementsByTagName("idUser");
+		value = (Element)idUserN.item(0);
+		String idUserString = getValueFromElement(value);
+		
+		NodeList idCategoryN = recordE.getElementsByTagName("time");
+		value = (Element)idCategoryN.item(0);
+		String idCategoryString = getValueFromElement(value);
+		
+		if(id!=null && timer!=null && created!=null && idUserString!=null && idCategoryString!=null) {
+			res = new BRecord();
+			res.setId(Integer.parseInt(id));
+			res.setTime(Double.parseDouble(timer));
+			res.setCreated(created);
+			int idUser = Integer.parseInt(idUserString);
+			res.setUser(DAOFactory.get().getDAOUser().select(idUser));
+			int idCategory = Integer.parseInt(idCategoryString);
+			res.setCategory(DAOFactory.get().getDAOCategory().select(idCategory));
+		}
+		return res;
+	}
+	
+	public static ArrayList<BRecord> getAllRecordsFromXML(Document xml){
+		ArrayList<BRecord> listRecords = new ArrayList<BRecord>();
+		BRecord res;
+		
+		NodeList listRecordsN = xml.getElementsByTagName("records");
+		Element listRecordsE = (Element)listRecordsN.item(0);
+		
+		NodeList recordN = listRecordsE.getElementsByTagName("record");
+		for(int i = 0; i<recordN.getLength(); i++) {
+			Element recordE = (Element)recordN.item(i);
+			
+			NodeList idRecordN = recordE.getElementsByTagName("id");
+			Element value = (Element)idRecordN.item(0);
+			String id = getValueFromElement(value);
+			
+			NodeList timeN = recordE.getElementsByTagName("time");
+			value = (Element)timeN.item(0);
+			String timer = getValueFromElement(value);
+			
+			NodeList createdN = recordE.getElementsByTagName("time");
+			value = (Element)createdN.item(0);
+			String created = getValueFromElement(value);
+			
+			NodeList idUserN = recordE.getElementsByTagName("idUser");
+			value = (Element)idUserN.item(0);
+			String idUserString = getValueFromElement(value);
+			
+			NodeList idCategoryN = recordE.getElementsByTagName("time");
+			value = (Element)idCategoryN.item(0);
+			String idCategoryString = getValueFromElement(value);
+			
+			if(id!=null && timer!=null && created!=null && idUserString!=null && idCategoryString!=null) {
+				res = new BRecord();
+				res.setId(Integer.parseInt(id));
+				res.setTime(Double.parseDouble(timer));
+				res.setCreated(created);
+				int idUser = Integer.parseInt(idUserString);
+				res.setUser(DAOFactory.get().getDAOUser().select(idUser));
+				int idCategory = Integer.parseInt(idCategoryString);
+				res.setCategory(DAOFactory.get().getDAOCategory().select(idCategory));
+				listRecords.add(res);
+			}
+		}
+		return listRecords;
 	}
 	
 	//Récupération de la valeur d'une balise XML
